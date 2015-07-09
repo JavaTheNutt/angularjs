@@ -12,9 +12,13 @@
 </head>
 <body>
 
-	<div class="mainContainer">
-		<h1>Features</h1>
-		<button class="btn btn-danger">Click me!</button>
+	<div class="mainContainer" data-ng-app="MyApp">
+		<div data-ng-controller="MainCtrl">
+            <h1>Features</h1>
+            <input type="text" data-ng-model="data.label">
+            <input type="text" data-ng-model="data.class">
+            <button class="btn {{data.class}}">{{data.label}}</button>
+        </div>
 
 		
 	</div>
