@@ -32,7 +32,65 @@ app.directive('interactiveButton', function () {
         }
     }
 })
+/*This controller will hold the array of names and the functions to add names to it*/
+.controller('ShieldCtrl', function($scope){
+    $scope.shieldNames = [];
 
+    this.addReigns = function (){
+        $scope.shieldNames.push("Roman Reigns: Juggernaut");
+    };
+
+    this.addRawlins = function (){
+        $scope.shieldNames.push("Seth Rawlins: Architect");
+    };
+
+    this.addAmbrose = function (){
+        $scope.shieldNames.push("Dean Ambrose: Lunatic Fringe");
+    };
+
+})
+
+/*This creates theshield directive*/
+.directive('theshield', function () {
+    return{
+        restrict: 'E',
+        /*This isolates the scope to stop it being overwritten by
+        * each function*/
+        scope: {},
+        controller: 'ShieldCtrl',
+        link: function ($scope, $element, $attrs) {
+            $element.bind('mouseenter', function () {
+                console.log($scope.shieldNames);
+            })
+        }
+    }
+})
+
+/*Attribute directives*/
+.directive('reigns', function () {
+   return {
+       require: 'theshield',
+       link: function ($scope, $element, $attrs, ShieldCtrl) {
+           ShieldCtrl.addReigns();
+       }
+   }
+})
+.directive('rawlins', function () {
+    return {
+        require: 'theshield',
+        link: function ($scope, $element, $attrs, ShieldCtrl) {
+            ShieldCtrl.addRawlins();
+        }
+    }
+})
+.directive('ambrose', function () {
+    return {
+        require: 'theshield',
+        link: function ($scope, $element, $attrs, ShieldCtrl) {
+            ShieldCtrl.addAmbrose();
+        }
+    }
+})
 .directive('walterwhite', function () {
     return{
         restrict: 'E',
