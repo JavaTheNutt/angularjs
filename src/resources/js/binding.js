@@ -5,10 +5,7 @@ app.controller('MainCtrl', function($scope)
 {
     $scope.data = {
         label : "My Button",
-        class: "btn-default",
-        house : "blue",
-        dog: "dobermann",
-        cat: "tabby"
+        class: "btn-danger"
     };
     $scope.list = ['01', '02', '03'];
 });
